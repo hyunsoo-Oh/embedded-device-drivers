@@ -4,3 +4,4 @@
 # STM32CubeIDE
 **/*.launch
 **/Debug/
+.metadata
