@@ -9,7 +9,6 @@
 #include "usart.h"
 
 #include "mpu6500.h"
-#include "motor_encoder.h"
 
 float accel[3], gyro[3];
 float temp;
@@ -18,7 +17,6 @@ char msg[128];
 
 void apInit(void)
 {
-//	MOTOR_Init();
 	MPU6500_Init();
 }
 
@@ -40,15 +38,5 @@ void apMain(void)
 		HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 100);
 
 		HAL_Delay(100);
-//		MOTOR_SetDuty(0.7);
-//
-//        // 현재 카운트와 RPM 읽기
-//        int32_t count = ENCODER_GetCount();
-//        float rpm = ENCODER_GetRPM();
-//
-//        snprintf(msg, sizeof(msg), "Count: %ld, RPM: %.2f\r\n", (long)count, rpm);
-//
-//		HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 100);
-//		HAL_Delay(100);
 	}
 }
