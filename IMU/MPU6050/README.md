@@ -56,3 +56,6 @@ float MPU6050_GetTempCelsius(void);            // [℃]
 void MPU6050_Calibrate(void);
 void MPU6050_OffsetMeasure(void);
 ```
+
+## 결과
+![alt text](../../img/mpu6050_data.png)
