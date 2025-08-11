@@ -8,33 +8,28 @@
 #include "ap.h"
 #include "usart.h"
 
-#include "mpu6050.h"
-
-float accel[3], gyro[3];
-float temp;
+#include "motor_encoder.h"
 
 char msg[128];
 
 void apInit(void)
 {
-	MPU6050_Init();
+	MOTOR_Init();
 }
 
 void apMain(void)
 {
 	while (1)
 	{
-		MPU6050_GetAccelG(accel);
-		MPU6050_GetGyroDPS(gyro);
-		temp = MPU6050_GetTempCelsius();
+		MOTOR_SetDuty(0.7);
 
-		snprintf(msg, sizeof(msg),
-			 "ACC: X=%f Y=%f Z=%f | GYRO: X=%f Y=%f Z=%f | TEMP=%.2f\r\n",
-			 accel[0], accel[1], accel[2],
-			 gyro[0], gyro[1], gyro[2],
-			 temp
-		);
+        // 현재 카운트와 RPM 읽기
+        int32_t count = ENCODER_GetCount();
+        float rpm = ENCODER_GetRPM();
+
+        snprintf(msg, sizeof(msg), "Count: %ld, RPM: %.2f\r\n", (long)count, rpm);
 
 		HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 100);
+		HAL_Delay(100);
 	}
 }
