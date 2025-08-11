@@ -1,0 +1,28 @@
+/*
+ * ap.c
+ *
+ *  Created on: Aug 10, 2025
+ *      Author: jweli
+ */
+
+#include "ap.h"
+#include "mpu6050.h"
+
+int16_t accel[3], gyro[3];
+float accel[3], gyro[3];
+float temp;
+
+char msg[128];
+
+void apInit(void)
+{
+	mpu6050_Init();
+}
+
+void apMain(void)
+{
+	while (1)
+	{
+
+	}
+}

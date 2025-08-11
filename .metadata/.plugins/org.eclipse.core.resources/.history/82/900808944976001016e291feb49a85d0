@@ -1,0 +1,13 @@
+/*
+ * mpu6050.h
+ *
+ *  Created on: Aug 11, 2025
+ *      Author: jweli
+ */
+
+#ifndef DEVICE_MPU6050_H_
+#define DEVICE_MPU6050_H_
+
+
+
+#endif /* DEVICE_MPU6050_H_ */

@@ -80,3 +80,944 @@ Finished building: default.size.stdout
  
 Finished building: test.list
  
+09:29:31 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+In file included from ../App/device/mpu6050.c:8:
+../App/device/mpu6050.h:94:5: error: unknown type name 'uint8_t'
+   94 |     uint8_t dlpf_cfg;       // CONFIG 레지스터 (0x1A)
+      |     ^~~~~~~
+../App/device/mpu6050.h:95:5: error: unknown type name 'uint8_t'
+   95 |     uint8_t gyro_fs_sel;    // GYRO_CONFIG 레지스터 (0x1B)
+      |     ^~~~~~~
+../App/device/mpu6050.h:96:5: error: unknown type name 'uint8_t'
+   96 |     uint8_t accel_fs_sel;   // ACCEL_CONFIG 레지스터 (0x1C)
+      |     ^~~~~~~
+../App/device/mpu6050.h:97:5: error: unknown type name 'uint8_t'
+   97 |     uint8_t smplrt_div;     // SMPLRT_DIV (0x19)
+      |     ^~~~~~~
+../App/device/mpu6050.h:110:28: error: unknown type name 'int16_t'
+  110 | void MPU6050_READ_RawAccel(int16_t ac_data[3]);
+      |                            ^~~~~~~
+../App/device/mpu6050.h:1:1: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+  +++ |+#include <stdint.h>
+    1 | /*
+../App/device/mpu6050.h:111:27: error: unknown type name 'int16_t'
+  111 | void MPU6050_READ_RawGyro(int16_t gy_data[3]);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:111:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:112:27: error: unknown type name 'int16_t'
+  112 | void MPU6050_READ_RawTemp(int16_t *te_data);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:112:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:115:24: error: unknown type name 'int16_t'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ^~~~~~~
+../App/device/mpu6050.h:115:24: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:116:23: error: unknown type name 'int16_t'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ^~~~~~~
+../App/device/mpu6050.h:116:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:117:23: error: unknown type name 'int16_t'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ^~~~~~~
+../App/device/mpu6050.h:117:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/usart.h:29,
+                 from ../App/device/mpu6050.c:9:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/ap.c:12:7: error: conflicting types for 'accel'; have 'float[3]'
+   12 | float accel[3], gyro[3];
+      |       ^~~~~
+../App/ap.c:11:9: note: previous declaration of 'accel' with type 'int16_t[3]' {aka 'short int[3]'}
+   11 | int16_t accel[3], gyro[3];
+      |         ^~~~~
+../App/ap.c:12:17: error: conflicting types for 'gyro'; have 'float[3]'
+   12 | float accel[3], gyro[3];
+      |                 ^~~~
+../App/ap.c:11:19: note: previous declaration of 'gyro' with type 'int16_t[3]' {aka 'short int[3]'}
+   11 | int16_t accel[3], gyro[3];
+      |                   ^~~~
+../App/ap.c: In function 'apMain':
+../App/ap.c:26:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   26 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:9:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:115:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:27:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:116:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:28:34: warning: passing argument 1 of 'MPU6050_ReadTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadTemp(&temp);
+      |                                  ^~~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ~~~~~~~~~^~~~~~~
+../App/ap.c:31:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                  ~^
+      |                                   |
+      |                                   int
+      |                                  %f
+   32 |                          accel[0], accel[1], accel[2],
+      |                          ~~~~~~~~  
+      |                               |
+      |                               double
+../App/ap.c:31:40: warning: format '%d' expects argument of type 'int', but argument 5 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                       ~^
+      |                                        |
+      |                                        int
+      |                                       %f
+   32 |                          accel[0], accel[1], accel[2],
+      |                                    ~~~~~~~~
+      |                                         |
+      |                                         double
+../App/ap.c:31:45: warning: format '%d' expects argument of type 'int', but argument 6 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                            ~^
+      |                                             |
+      |                                             int
+      |                                            %f
+   32 |                          accel[0], accel[1], accel[2],
+      |                                              ~~~~~~~~
+      |                                                   |
+      |                                                   double
+../App/ap.c:31:58: warning: format '%d' expects argument of type 'int', but argument 7 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                         ~^
+      |                                                          |
+      |                                                          int
+      |                                                         %f
+   32 |                          accel[0], accel[1], accel[2],
+   33 |                          gyro[0], gyro[1], gyro[2],
+      |                          ~~~~~~~                          
+      |                              |
+      |                              double
+../App/ap.c:31:63: warning: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                              ~^
+      |                                                               |
+      |                                                               int
+      |                                                              %f
+   32 |                          accel[0], accel[1], accel[2],
+   33 |                          gyro[0], gyro[1], gyro[2],
+      |                                   ~~~~~~~                      
+      |                                       |
+      |                                       double
+../App/ap.c:31:68: warning: format '%d' expects argument of type 'int', but argument 9 has type 'double' [-Wformat=]
+   31 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                                   ~^
+      |                                                                    |
+      |                                                                    int
+      |                                                                   %f
+   32 |                          accel[0], accel[1], accel[2],
+   33 |                          gyro[0], gyro[1], gyro[2],
+      |                                            ~~~~~~~                  
+      |                                                |
+      |                                                double
+../App/ap.c:37:36: error: 'huart2' undeclared (first use in this function)
+   37 |                 HAL_UART_Transmit(&huart2, (uint8_t *)msg, strlen(msg), 100);
+      |                                    ^~~~~~
+../App/ap.c:37:36: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [App/device/subdir.mk:19: App/device/mpu6050.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [App/subdir.mk:19: App/ap.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:29:49 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+In file included from ../App/device/mpu6050.c:8:
+../App/device/mpu6050.h:94:5: error: unknown type name 'uint8_t'
+   94 |     uint8_t dlpf_cfg;       // CONFIG 레지스터 (0x1A)
+      |     ^~~~~~~
+../App/device/mpu6050.h:95:5: error: unknown type name 'uint8_t'
+   95 |     uint8_t gyro_fs_sel;    // GYRO_CONFIG 레지스터 (0x1B)
+      |     ^~~~~~~
+../App/device/mpu6050.h:96:5: error: unknown type name 'uint8_t'
+   96 |     uint8_t accel_fs_sel;   // ACCEL_CONFIG 레지스터 (0x1C)
+      |     ^~~~~~~
+../App/device/mpu6050.h:97:5: error: unknown type name 'uint8_t'
+   97 |     uint8_t smplrt_div;     // SMPLRT_DIV (0x19)
+      |     ^~~~~~~
+../App/device/mpu6050.h:110:28: error: unknown type name 'int16_t'
+  110 | void MPU6050_READ_RawAccel(int16_t ac_data[3]);
+      |                            ^~~~~~~
+../App/device/mpu6050.h:1:1: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+  +++ |+#include <stdint.h>
+    1 | /*
+../App/device/mpu6050.h:111:27: error: unknown type name 'int16_t'
+  111 | void MPU6050_READ_RawGyro(int16_t gy_data[3]);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:111:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:112:27: error: unknown type name 'int16_t'
+  112 | void MPU6050_READ_RawTemp(int16_t *te_data);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:112:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:115:24: error: unknown type name 'int16_t'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ^~~~~~~
+../App/device/mpu6050.h:115:24: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:116:23: error: unknown type name 'int16_t'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ^~~~~~~
+../App/device/mpu6050.h:116:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:117:23: error: unknown type name 'int16_t'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ^~~~~~~
+../App/device/mpu6050.h:117:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/usart.h:29,
+                 from ../App/device/mpu6050.c:9:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+make: *** [App/device/subdir.mk:19: App/device/mpu6050.o] Error 1
+make: *** Waiting for unfinished jobs....
+../App/ap.c:14:7: error: conflicting types for 'accel'; have 'float[3]'
+   14 | float accel[3], gyro[3];
+      |       ^~~~~
+../App/ap.c:13:9: note: previous declaration of 'accel' with type 'int16_t[3]' {aka 'short int[3]'}
+   13 | int16_t accel[3], gyro[3];
+      |         ^~~~~
+../App/ap.c:14:17: error: conflicting types for 'gyro'; have 'float[3]'
+   14 | float accel[3], gyro[3];
+      |                 ^~~~
+../App/ap.c:13:19: note: previous declaration of 'gyro' with type 'int16_t[3]' {aka 'short int[3]'}
+   13 | int16_t accel[3], gyro[3];
+      |                   ^~~~
+../App/ap.c: In function 'apMain':
+../App/ap.c:28:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:115:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:29:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:116:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:30:34: warning: passing argument 1 of 'MPU6050_ReadTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   30 |                 MPU6050_ReadTemp(&temp);
+      |                                  ^~~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ~~~~~~~~~^~~~~~~
+../App/ap.c:33:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                  ~^
+      |                                   |
+      |                                   int
+      |                                  %f
+   34 |                          accel[0], accel[1], accel[2],
+      |                          ~~~~~~~~  
+      |                               |
+      |                               double
+../App/ap.c:33:40: warning: format '%d' expects argument of type 'int', but argument 5 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                       ~^
+      |                                        |
+      |                                        int
+      |                                       %f
+   34 |                          accel[0], accel[1], accel[2],
+      |                                    ~~~~~~~~
+      |                                         |
+      |                                         double
+../App/ap.c:33:45: warning: format '%d' expects argument of type 'int', but argument 6 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                            ~^
+      |                                             |
+      |                                             int
+      |                                            %f
+   34 |                          accel[0], accel[1], accel[2],
+      |                                              ~~~~~~~~
+      |                                                   |
+      |                                                   double
+../App/ap.c:33:58: warning: format '%d' expects argument of type 'int', but argument 7 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                         ~^
+      |                                                          |
+      |                                                          int
+      |                                                         %f
+   34 |                          accel[0], accel[1], accel[2],
+   35 |                          gyro[0], gyro[1], gyro[2],
+      |                          ~~~~~~~                          
+      |                              |
+      |                              double
+../App/ap.c:33:63: warning: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                              ~^
+      |                                                               |
+      |                                                               int
+      |                                                              %f
+   34 |                          accel[0], accel[1], accel[2],
+   35 |                          gyro[0], gyro[1], gyro[2],
+      |                                   ~~~~~~~                      
+      |                                       |
+      |                                       double
+../App/ap.c:33:68: warning: format '%d' expects argument of type 'int', but argument 9 has type 'double' [-Wformat=]
+   33 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                                   ~^
+      |                                                                    |
+      |                                                                    int
+      |                                                                   %f
+   34 |                          accel[0], accel[1], accel[2],
+   35 |                          gyro[0], gyro[1], gyro[2],
+      |                                            ~~~~~~~                  
+      |                                                |
+      |                                                double
+make: *** [App/subdir.mk:19: App/ap.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:30:18 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+In file included from ../App/device/mpu6050.c:8:
+../App/device/mpu6050.h:94:5: error: unknown type name 'uint8_t'
+   94 |     uint8_t dlpf_cfg;       // CONFIG 레지스터 (0x1A)
+      |     ^~~~~~~
+../App/device/mpu6050.h:95:5: error: unknown type name 'uint8_t'
+   95 |     uint8_t gyro_fs_sel;    // GYRO_CONFIG 레지스터 (0x1B)
+      |     ^~~~~~~
+../App/device/mpu6050.h:96:5: error: unknown type name 'uint8_t'
+   96 |     uint8_t accel_fs_sel;   // ACCEL_CONFIG 레지스터 (0x1C)
+      |     ^~~~~~~
+../App/device/mpu6050.h:97:5: error: unknown type name 'uint8_t'
+   97 |     uint8_t smplrt_div;     // SMPLRT_DIV (0x19)
+      |     ^~~~~~~
+../App/device/mpu6050.h:110:28: error: unknown type name 'int16_t'
+  110 | void MPU6050_READ_RawAccel(int16_t ac_data[3]);
+      |                            ^~~~~~~
+../App/device/mpu6050.h:1:1: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+  +++ |+#include <stdint.h>
+    1 | /*
+../App/device/mpu6050.h:111:27: error: unknown type name 'int16_t'
+  111 | void MPU6050_READ_RawGyro(int16_t gy_data[3]);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:111:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:112:27: error: unknown type name 'int16_t'
+  112 | void MPU6050_READ_RawTemp(int16_t *te_data);
+      |                           ^~~~~~~
+../App/device/mpu6050.h:112:27: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:115:24: error: unknown type name 'int16_t'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ^~~~~~~
+../App/device/mpu6050.h:115:24: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:116:23: error: unknown type name 'int16_t'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ^~~~~~~
+../App/device/mpu6050.h:116:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.h:117:23: error: unknown type name 'int16_t'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ^~~~~~~
+../App/device/mpu6050.h:117:23: note: 'int16_t' is defined in header '<stdint.h>'; did you forget to '#include <stdint.h>'?
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/usart.h:29,
+                 from ../App/device/mpu6050.c:9:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+make: *** [App/device/subdir.mk:19: App/device/mpu6050.o] Error 1
+make: *** Waiting for unfinished jobs....
+../App/ap.c: In function 'apMain':
+../App/ap.c:27:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:115:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  115 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:28:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:116:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  116 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:29:34: warning: passing argument 1 of 'MPU6050_ReadTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |                 MPU6050_ReadTemp(&temp);
+      |                                  ^~~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ~~~~~~~~~^~~~~~~
+../App/ap.c:32:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                  ~^
+      |                                   |
+      |                                   int
+      |                                  %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                          ~~~~~~~~  
+      |                               |
+      |                               double
+../App/ap.c:32:40: warning: format '%d' expects argument of type 'int', but argument 5 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                       ~^
+      |                                        |
+      |                                        int
+      |                                       %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                    ~~~~~~~~
+      |                                         |
+      |                                         double
+../App/ap.c:32:45: warning: format '%d' expects argument of type 'int', but argument 6 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                            ~^
+      |                                             |
+      |                                             int
+      |                                            %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                              ~~~~~~~~
+      |                                                   |
+      |                                                   double
+../App/ap.c:32:58: warning: format '%d' expects argument of type 'int', but argument 7 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                         ~^
+      |                                                          |
+      |                                                          int
+      |                                                         %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                          ~~~~~~~                          
+      |                              |
+      |                              double
+../App/ap.c:32:63: warning: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                              ~^
+      |                                                               |
+      |                                                               int
+      |                                                              %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                   ~~~~~~~                      
+      |                                       |
+      |                                       double
+../App/ap.c:32:68: warning: format '%d' expects argument of type 'int', but argument 9 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                                   ~^
+      |                                                                    |
+      |                                                                    int
+      |                                                                   %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                            ~~~~~~~                  
+      |                                                |
+      |                                                double
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:30:49 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/ap.c: In function 'apMain':
+../App/ap.c:27:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:28:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:118:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  118 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:29:34: warning: passing argument 1 of 'MPU6050_ReadTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |                 MPU6050_ReadTemp(&temp);
+      |                                  ^~~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:119:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  119 | void MPU6050_ReadTemp(int16_t *te_data);       // 온도 (보정 불필요)
+      |                       ~~~~~~~~~^~~~~~~
+../App/ap.c:32:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                  ~^
+      |                                   |
+      |                                   int
+      |                                  %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                          ~~~~~~~~  
+      |                               |
+      |                               double
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/ap.c:32:40: warning: format '%d' expects argument of type 'int', but argument 5 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                       ~^
+      |                                        |
+      |                                        int
+      |                                       %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                    ~~~~~~~~
+      |                                         |
+      |                                         double
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../App/ap.c:32:45: warning: format '%d' expects argument of type 'int', but argument 6 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                            ~^
+      |                                             |
+      |                                             int
+      |                                            %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                              ~~~~~~~~
+      |                                                   |
+      |                                                   double
+../App/ap.c:32:58: warning: format '%d' expects argument of type 'int', but argument 7 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                         ~^
+      |                                                          |
+      |                                                          int
+      |                                                         %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                          ~~~~~~~                          
+      |                              |
+      |                              double
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from D:/Project/embedded-device-drivers/test/App/common/def.h:17,
+                 from ../App/device/mpu6050.h:11,
+                 from ../App/device/mpu6050.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/ap.c:32:63: warning: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                              ~^
+      |                                                               |
+      |                                                               int
+      |                                                              %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                   ~~~~~~~                      
+      |                                       |
+      |                                       double
+../App/ap.c:32:68: warning: format '%d' expects argument of type 'int', but argument 9 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                                   ~^
+      |                                                                    |
+      |                                                                    int
+      |                                                                   %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                            ~~~~~~~                  
+      |                                                |
+      |                                                double
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+D:/Program Files/STM32CubeIDE_1.19.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/bin/ld.exe: ./App/ap.o: in function `apMain':
+D:/Project/embedded-device-drivers/test/Debug/../App/ap.c:29:(.text.apMain+0x16): undefined reference to `MPU6050_ReadTemp'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:67: test.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:33:27 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from D:/Project/embedded-device-drivers/test/App/common/def.h:17,
+                 from ../App/device/mpu6050.h:11,
+                 from ../App/device/mpu6050.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/ap.c: In function 'apMain':
+../App/ap.c:27:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:28:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:118:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  118 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:29:38: warning: passing argument 1 of 'MPU6050_READ_RawTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |                 MPU6050_READ_RawTemp(&temp);
+      |                                      ^~~~~
+      |                                      |
+      |                                      float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:114:36: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  114 | void MPU6050_READ_RawTemp(int16_t *te_data);
+      |                           ~~~~~~~~~^~~~~~~
+../App/ap.c:32:35: warning: format '%d' expects argument of type 'int', but argument 4 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                  ~^
+      |                                   |
+      |                                   int
+      |                                  %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                          ~~~~~~~~  
+      |                               |
+      |                               double
+../App/ap.c:32:40: warning: format '%d' expects argument of type 'int', but argument 5 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                       ~^
+      |                                        |
+      |                                        int
+      |                                       %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                    ~~~~~~~~
+      |                                         |
+      |                                         double
+../App/ap.c:32:45: warning: format '%d' expects argument of type 'int', but argument 6 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                            ~^
+      |                                             |
+      |                                             int
+      |                                            %f
+   33 |                          accel[0], accel[1], accel[2],
+      |                                              ~~~~~~~~
+      |                                                   |
+      |                                                   double
+../App/ap.c:32:58: warning: format '%d' expects argument of type 'int', but argument 7 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                         ~^
+      |                                                          |
+      |                                                          int
+      |                                                         %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                          ~~~~~~~                          
+      |                              |
+      |                              double
+../App/ap.c:32:63: warning: format '%d' expects argument of type 'int', but argument 8 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                              ~^
+      |                                                               |
+      |                                                               int
+      |                                                              %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                   ~~~~~~~                      
+      |                                       |
+      |                                       double
+../App/ap.c:32:68: warning: format '%d' expects argument of type 'int', but argument 9 has type 'double' [-Wformat=]
+   32 |                          "ACC: X=%d Y=%d Z=%d | GYRO: X=%d Y=%d Z=%d | TEMP=%.2f\r\n",
+      |                                                                   ~^
+      |                                                                    |
+      |                                                                    int
+      |                                                                   %f
+   33 |                          accel[0], accel[1], accel[2],
+   34 |                          gyro[0], gyro[1], gyro[2],
+      |                                            ~~~~~~~                  
+      |                                                |
+      |                                                double
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test.elf
+ 
+arm-none-eabi-size  test.elf 
+arm-none-eabi-objdump -h -S test.elf  > "test.list"
+   text	   data	    bss	    dec	    hex	filename
+  37564	    472	   2328	  40364	   9dac	test.elf
+Finished building: default.size.stdout
+ 
+Finished building: test.list
+ 
+09:33:47 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/ap.c: In function 'apMain':
+../App/ap.c:27:35: warning: passing argument 1 of 'MPU6050_ReadAccel' from incompatible pointer type [-Wincompatible-pointer-types]
+   27 |                 MPU6050_ReadAccel(accel);
+      |                                   ^~~~~
+      |                                   |
+      |                                   float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:117:32: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  117 | void MPU6050_ReadAccel(int16_t ac_data[3]);    // 오프셋 보정된 가속도
+      |                        ~~~~~~~~^~~~~~~~~~
+../App/ap.c:28:34: warning: passing argument 1 of 'MPU6050_ReadGyro' from incompatible pointer type [-Wincompatible-pointer-types]
+   28 |                 MPU6050_ReadGyro(gyro);
+      |                                  ^~~~
+      |                                  |
+      |                                  float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:118:31: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  118 | void MPU6050_ReadGyro(int16_t gy_data[3]);     // 오프셋 보정된 자이로
+      |                       ~~~~~~~~^~~~~~~~~~
+../App/ap.c:29:38: warning: passing argument 1 of 'MPU6050_READ_RawTemp' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |                 MPU6050_READ_RawTemp(&temp);
+      |                                      ^~~~~
+      |                                      |
+      |                                      float *
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:114:36: note: expected 'int16_t *' {aka 'short int *'} but argument is of type 'float *'
+  114 | void MPU6050_READ_RawTemp(int16_t *te_data);
+      |                           ~~~~~~~~~^~~~~~~
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test.elf
+ 
+arm-none-eabi-size  test.elf 
+arm-none-eabi-objdump -h -S test.elf  > "test.list"
+   text	   data	    bss	    dec	    hex	filename
+  37564	    472	   2328	  40364	   9dac	test.elf
+Finished building: default.size.stdout
+ 
+Finished building: test.list
+ 
+09:36:04 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from D:/Project/embedded-device-drivers/test/App/common/def.h:17,
+                 from ../App/device/mpu6050.h:11,
+                 from ../App/device/mpu6050.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/ap.c: In function 'apMain':
+../App/ap.c:29:17: error: too many arguments to function 'MPU6050_GetTempCelsius'
+   29 |                 MPU6050_GetTempCelsius(&temp);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:127:7: note: declared here
+  127 | float MPU6050_GetTempCelsius(void);            // 온도를 섭씨로
+      |       ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [App/subdir.mk:19: App/ap.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:37:08 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/ap.c: In function 'apMain':
+../App/ap.c:29:40: error: incompatible type for argument 1 of 'MPU6050_GetTempCelsius'
+   29 |                 MPU6050_GetTempCelsius(&temp);
+      |                                        ^~~~~
+      |                                        |
+      |                                        float *
+In file included from ../App/ap.c:11:
+D:/Project/embedded-device-drivers/test/App/device/mpu6050.h:127:36: note: expected 'float' but argument is of type 'float *'
+  127 | float MPU6050_GetTempCelsius(float celsius);            // 온도를 섭씨로
+      |                              ~~~~~~^~~~~~~
+make: *** [App/subdir.mk:19: App/ap.o] Error 1
+make: *** Waiting for unfinished jobs....
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from D:/Project/embedded-device-drivers/test/App/common/def.h:17,
+                 from ../App/device/mpu6050.h:11,
+                 from ../App/device/mpu6050.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+09:37:57 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/device/mpu6050.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/device/mpu6050.d" -MT"App/device/mpu6050.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/device/mpu6050.o"
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+../App/device/mpu6050.c: In function 'MPU6050_Init':
+../App/device/mpu6050.c:69:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   69 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Success\r\n", sizeof("WHO_AM_I Read Success\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from D:/Project/embedded-device-drivers/test/App/common/def.h:17,
+                 from ../App/device/mpu6050.h:11,
+                 from ../App/device/mpu6050.c:8:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../App/device/mpu6050.c:71:44: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+   71 |                 HAL_UART_Transmit(&huart2, "WHO_AM_I Read Failed\r\n", sizeof("WHO_AM_I Read Failed\r\n"), 100);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                            |
+      |                                            char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test.elf
+ 
+arm-none-eabi-size  test.elf 
+arm-none-eabi-objdump -h -S test.elf  > "test.list"
+   text	   data	    bss	    dec	    hex	filename
+  38172	    472	   2328	  40972	   a00c	test.elf
+Finished building: default.size.stdout
+ 
+Finished building: test.list
+ 
+09:38:15 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../App/ap.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/ap.d" -MT"App/ap.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/ap.o"
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test.elf
+ 
+arm-none-eabi-size  test.elf 
+arm-none-eabi-objdump -h -S test.elf  > "test.list"
+   text	   data	    bss	    dec	    hex	filename
+  38140	    472	   2328	  40940	   9fec	test.elf
+Finished building: default.size.stdout
+ 
+Finished building: test.list
+ 
+09:39:57 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-size  test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38140	    472	   2328	  40940	   9fec	test.elf
+Finished building: default.size.stdout
+ 
+09:45:48 **** Incremental Build of configuration Debug for project test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"D:/Project/embedded-device-drivers/test/App" -I"D:/Project/embedded-device-drivers/test/App/common" -I"D:/Project/embedded-device-drivers/test/App/device" -I"D:/Project/embedded-device-drivers/test/App/hw" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/i2c.d" -MT"Core/Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/i2c.o"
+arm-none-eabi-gcc -o "test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Project\embedded-device-drivers\test\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: test.elf
+ 
+arm-none-eabi-size  test.elf 
+arm-none-eabi-objdump -h -S test.elf  > "test.list"
+   text	   data	    bss	    dec	    hex	filename
+  38140	    472	   2328	  40940	   9fec	test.elf
+Finished building: default.size.stdout
+ 
+Finished building: test.list
+ 
