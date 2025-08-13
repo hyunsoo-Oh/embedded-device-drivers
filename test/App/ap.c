@@ -8,7 +8,11 @@
 #include "ap.h"
 #include "usart.h"
 
+#include "mpu6500.h"
 #include "motor_encoder.h"
+
+float accel[3], gyro[3];
+float temp;
 
 char msg[128];
 
