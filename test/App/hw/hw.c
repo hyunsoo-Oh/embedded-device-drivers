@@ -15,10 +15,10 @@ void hwInit(void)
 	HAL_TIM_Base_Start_IT(&htim10);
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if (htim->Instance == TIM10)
-	{
-		ENCODER_Update();
-	}
-}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//	if (htim->Instance == TIM10)
+//	{
+//		ENCODER_Update();
+//	}
+//}
